@@ -4,6 +4,9 @@ import { StatusCard } from '@/components/dashboard/StatusCard';
 import { QuickActions } from '@/components/dashboard/QuickActions';
 import { NoticeBoard } from '@/components/dashboard/NoticeBoard';
 import { ClassStatusBox } from '@/components/dashboard/ClassStatusBox';
+import { PomodoroTimer } from '@/components/widgets/PomodoroTimer';
+import { QuickNotes } from '@/components/widgets/QuickNotes';
+import { StudyStreak } from '@/components/widgets/StudyStreak';
 import { motion } from 'framer-motion';
 import { BarChart3, Users, BookOpen, Award, Loader2, AlertCircle } from 'lucide-react';
 import { dashboardService, type StudentDashboardData, type TeacherDashboardData } from '@/services/dashboardService';
@@ -527,12 +530,22 @@ export function Dashboard() {
         ))}
       </div>
 
+      {/* Study Streak - Prominent position */}
+      <StudyStreak />
+
       <div className="grid lg:grid-cols-3 gap-4 md:gap-6">
         <div className="lg:col-span-2 space-y-4 md:space-y-6">
           <QuickActions />
+          
+          {/* Widgets Grid */}
+          <div className="grid md:grid-cols-2 gap-4">
+            <PomodoroTimer />
+            <QuickNotes />
+          </div>
+          
           <StatusCard />
         </div>
-        <div>
+        <div className="space-y-4">
           <NoticeBoard />
         </div>
       </div>
